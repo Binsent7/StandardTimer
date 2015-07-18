@@ -6,24 +6,45 @@
 //  Copyright (c) 2015年 binsent. All rights reserved.
 //
 
-#warning テスト
-
 #import "ViewController.h"
 
 @interface ViewController ()
+
+@property (weak, nonatomic) IBOutlet UIPickerView *selectTimePicker;
+@property (weak, nonatomic) IBOutlet UIButton *leftButton;
+@property (weak, nonatomic) IBOutlet UIButton *rightButton;
+
+- (IBAction)onTapLeftButton:(id)sender;
+- (IBAction)onTapRightButton:(id)sender;
 
 @end
 
 @implementation ViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+}
+
+/*
+ 左ボタンタップ時にコール
+ */
+- (IBAction)onTapLeftButton:(id)sender
+{
+    
+}
+
+/*
+ 右ボタンタップ時にコール
+ */
+- (IBAction)onTapRightButton:(id)sender
+{
+    
 }
 
 @end

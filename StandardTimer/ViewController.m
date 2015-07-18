@@ -6,6 +6,8 @@
 //  Copyright (c) 2015年 binsent. All rights reserved.
 //
 
+#warning テスト
+
 #import "ViewController.h"
 
 @interface ViewController ()

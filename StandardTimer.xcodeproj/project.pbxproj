@@ -15,6 +15,7 @@
 		323380431B5A35FF000F3454 /* StandardTimerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 323380421B5A35FF000F3454 /* StandardTimerTests.m */; };
 		3284AC2C1B67B38D00E9B95C /* CountDownView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3284AC2B1B67B38D00E9B95C /* CountDownView.m */; };
 		3284AC2E1B67B3B600E9B95C /* CountDownView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3284AC2D1B67B3B600E9B95C /* CountDownView.xib */; };
+		3284AC311B67B59800E9B95C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3284AC301B67B59800E9B95C /* ViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,8 @@
 		3284AC2A1B67B38D00E9B95C /* CountDownView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountDownView.h; sourceTree = "<group>"; };
 		3284AC2B1B67B38D00E9B95C /* CountDownView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountDownView.m; sourceTree = "<group>"; };
 		3284AC2D1B67B3B600E9B95C /* CountDownView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CountDownView.xib; sourceTree = "<group>"; };
+		3284AC2F1B67B59800E9B95C /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		3284AC301B67B59800E9B95C /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +88,8 @@
 			children = (
 				3233802A1B5A35FF000F3454 /* AppDelegate.h */,
 				3233802B1B5A35FF000F3454 /* AppDelegate.m */,
+				3284AC2F1B67B59800E9B95C /* ViewController.h */,
+				3284AC301B67B59800E9B95C /* ViewController.m */,
 				3284AC2A1B67B38D00E9B95C /* CountDownView.h */,
 				3284AC2B1B67B38D00E9B95C /* CountDownView.m */,
 				3284AC2D1B67B3B600E9B95C /* CountDownView.xib */,
@@ -225,6 +230,7 @@
 			files = (
 				3233802C1B5A35FF000F3454 /* AppDelegate.m in Sources */,
 				3284AC2C1B67B38D00E9B95C /* CountDownView.m in Sources */,
+				3284AC311B67B59800E9B95C /* ViewController.m in Sources */,
 				323380291B5A35FF000F3454 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

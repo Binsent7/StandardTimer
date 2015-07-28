@@ -8,6 +8,14 @@
 
 #import "CountDownView.h"
 
+#define updateCountDownLabel(hour,min,sec) [NSString stringWithFormat:@"%2d:%2d:%2d",hour,min,sec]
+
+@interface CountDownView ()
+
+@property (weak, nonatomic) IBOutlet UILabel *countDownLabel;
+
+@end
+
 @implementation CountDownView
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -20,6 +28,58 @@
     }
     
     return self;
+}
+
+#pragma mark -- Public
+
+/*
+ タイマーをリセット
+ */
+- (void)resetCountTimer
+{
+    updateCountDownLabel(0, 0, 0);
+}
+
+/*
+ タイマーカウントを開始
+ */
+- (void)startCountTimer
+{
+    
+}
+
+/*
+ タイマーカウントを停止
+ */
+- (void)stopCountTimer
+{
+    
+}
+
+#pragma mark Private
+
+/*
+ カウント開始
+ */
+- (void)startTimer
+{
+    
+}
+
+/*
+ カウント停止
+ */
+- (void)stopTimer
+{
+    
+}
+
+/*
+ 時間表示更新
+ */
+- (void)updateTimer
+{
+    
 }
 
 @end

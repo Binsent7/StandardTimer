@@ -25,6 +25,9 @@
                 <constraint firstAttribute="trailing" secondItem="DAz-km-Iib" secondAttribute="trailing" constant="8" id="zJz-47-oOQ"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
+            <connections>
+                <outlet property="countDownLabel" destination="DAz-km-Iib" id="Ft1-MT-hb1"/>
+            </connections>
         </view>
     </objects>
 </document>

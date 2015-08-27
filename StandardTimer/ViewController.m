@@ -15,6 +15,11 @@ typedef enum {
     TimerStateStopped   = 2,    // 一時停止中
 } TimerState;
 
+#warning 秒を追加
+#warning 00:00:00で開始タップ時にアラート表示
+#warning 00:00:00となった時にあらーと表示
+#warning ボタンタップ時のアニメーション中にボタン非活性
+
 @interface ViewController ()
 
 @property (weak, nonatomic) IBOutlet UIView *backgoundView;

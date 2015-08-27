@@ -13,6 +13,7 @@
 @interface CountDownView ()
 
 @property (weak, nonatomic) IBOutlet UILabel *countDownLabel;
+@property (nonatomic, strong) NSTimer *countDownTimer;
 
 @end
 
@@ -72,6 +73,9 @@
 - (void)resetCountTimer
 {
     self.countDownLabel.text =  updateCountDownLabel(0, 0, 0);
+    
+    [self.countDownTimer invalidate];
+    self.countDownTimer = nil;
 }
 
 /*
@@ -79,7 +83,29 @@
  */
 - (void)startCountTimer
 {
-#warning カウントダウン処理
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1
+                                                      target:self
+                                                    selector:@selector(timerUpdate:)
+                                                    userInfo:nil
+                                                     repeats:YES];
+    self.countDownTimer = timer;
+}
+
+/*
+ タイマーメソッド
+ */
+- (void)timerUpdate:(NSTimer *)timer
+{
+    if (self.totalTime > 0) {
+        self.totalTime--;
+        NSUInteger restTimeH = self.totalTime / 3600;
+        NSUInteger restTimeM = (self.totalTime - restTimeH * 3600) / 60;
+        NSUInteger resetTimeS = self.totalTime % 60;
+        self.countDownLabel.text = updateCountDownLabel(restTimeH,restTimeM,resetTimeS);
+    }
+    else {
+        [self resetCountTimer];
+    }
 }
 
 /*
@@ -87,42 +113,26 @@
  */
 - (void)stopCountTimer
 {
-#warning カウントだけとめる処理
+    // カウントだけ止める
+    [self.countDownTimer invalidate];
+    self.countDownTimer = nil;
 }
 
 #pragma mark Private
-
-/*
- カウント開始
- */
-- (void)startTimer
-{
-    
-}
-
-/*
- カウント停止
- */
-- (void)stopTimer
-{
-    
-}
 
 /*
  時間表示更新
  */
 - (void)updateTimer
 {
-    NSLog(@"タイマー更新");
     if (self.totalTime > 0) {
         NSUInteger hour = self.totalTime / 3600;
         NSUInteger min  = (self.totalTime - hour * 3600) / 60;
-        NSUInteger sec  = self.totalTime / 60;
-        NSLog(@"%d",sec);
+        NSUInteger sec  = self.totalTime % 60;
         self.countDownLabel.text =  updateCountDownLabel(hour, min, sec);
-        NSLog(@"%@",self.countDownLabel.text);
     }
     else {
+        // フェールセーフ
         [self resetCountTimer];
     }
 }

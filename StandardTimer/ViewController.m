@@ -173,7 +173,6 @@ typedef enum {
  */
 - (void)startTimer
 {
-    NSLog(@"タイマー：開始");
     self.timerState = TimerStateCounting;
     
     // 時間設定
@@ -198,11 +197,24 @@ typedef enum {
 }
 
 /*
+ タイマー再開
+ */
+- (void)restartTimer
+{
+    self.timerState = TimerStateCounting;
+    
+    // カウント開始
+    [self.countDownView startCountTimer];
+    
+    // ボタンの表示を更新
+    [self updateTimerButton];
+}
+
+/*
  タイマー一時停止
  */
 - (void)stopTimer
 {
-    NSLog(@"タイマー：一時停止");
     self.timerState = TimerStateStopped;
     
     // カウント一時停止
@@ -217,7 +229,6 @@ typedef enum {
  */
 - (void)cancelTimer
 {
-    NSLog(@"タイマー：キャンセル");
     self.timerState = TimerStateIdle;
     
     // カウントダウンビューを非表示
@@ -292,6 +303,7 @@ typedef enum {
     switch (self.timerState) {
         case TimerStateIdle:
             // 開始
+#warning 00:00:00だったらエラーを出したい
             [self startTimer];
             break;
         default:
@@ -313,7 +325,7 @@ typedef enum {
             break;
         case TimerStateStopped:
             // 開始
-            [self startTimer];
+            [self restartTimer];
             break;
         default:
             break;

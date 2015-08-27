@@ -40,6 +40,9 @@ typedef enum {
     [super viewDidLoad];
     
     [self initialize];
+    
+    [self setupViews];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -147,8 +150,6 @@ typedef enum {
     
     [self.selectTimePicker addSubview:hourLabel];
     [self.selectTimePicker addSubview:minLabel];
-    
-    [self setupViews];
 }
 
 /*
@@ -162,6 +163,9 @@ typedef enum {
                               self.backgoundView.frame.size.height);
     _countDownView = [[CountDownView alloc] initWithFrame:frame]; // 生成、セッター、ゲッター、解放時は「self.」でなく「_」で記述
     [self.view addSubview:self.countDownView];
+    
+    // ボタンの表示を更新
+    [self updateTimerButton];
 }
 
 /*
@@ -188,6 +192,9 @@ typedef enum {
     
     // カウント開始
     [self.countDownView startCountTimer];
+    
+    // ボタンの表示を更新
+    [self updateTimerButton];
 }
 
 /*
@@ -200,6 +207,9 @@ typedef enum {
     
     // カウント一時停止
     [self.countDownView stopCountTimer];
+    
+    // ボタンの表示を更新
+    [self updateTimerButton];
 }
 
 /*
@@ -212,6 +222,64 @@ typedef enum {
     
     // カウントダウンビューを非表示
     [self.countDownView hideCountDownView];
+    
+    // ボタンの表示を更新
+    [self updateTimerButton];
+}
+
+/*
+ ボタンの表示を更新
+ */
+- (void)updateTimerButton
+{
+    switch (self.timerState) {
+        case TimerStateIdle:
+            // 左ボタン
+            [self.leftButton setTitle:@"開始"
+                             forState:UIControlStateNormal];
+            [self.leftButton setTitleColor:[UIColor greenColor]
+                                  forState:UIControlStateNormal];
+            self.leftButton.enabled = YES;
+            
+            // 右ボタン
+            [self.rightButton setTitle:@"一時停止"
+                              forState:UIControlStateNormal];
+            [self.rightButton setTitleColor:[UIColor lightGrayColor]
+                                  forState:UIControlStateNormal];
+            self.rightButton.enabled = NO;
+            break;
+            
+        case TimerStateCounting:
+            // 左ボタン
+            [self.leftButton setTitle:@"キャンセル"
+                             forState:UIControlStateNormal];
+            [self.leftButton setTitleColor:[UIColor redColor]
+                                  forState:UIControlStateNormal];
+            self.leftButton.enabled = YES;
+            
+            // 右ボタン
+            [self.rightButton setTitle:@"一時停止"
+                              forState:UIControlStateNormal];
+            [self.rightButton setTitleColor:[UIColor blackColor]
+                                   forState:UIControlStateNormal];
+            self.rightButton.enabled = YES;
+            break;
+        case TimerStateStopped:
+            // 左ボタン
+            [self.leftButton setTitle:@"キャンセル"
+                             forState:UIControlStateNormal];
+            [self.leftButton setTitleColor:[UIColor redColor]
+                                  forState:UIControlStateNormal];
+            self.leftButton.enabled = YES;
+            
+            // 右ボタン
+            [self.rightButton setTitle:@"再開"
+                              forState:UIControlStateNormal];
+            [self.rightButton setTitleColor:[UIColor blackColor]
+                                   forState:UIControlStateNormal];
+            self.rightButton.enabled = YES;
+            break;
+    }
 }
 
 #pragma mark -- Button Action Event
@@ -223,14 +291,12 @@ typedef enum {
 {
     switch (self.timerState) {
         case TimerStateIdle:
-        case TimerStateStopped:
             // 開始
             [self startTimer];
             break;
-            
         default:
-            // 一時停止
-            [self stopTimer];
+            // キャンセル
+            [self cancelTimer];
             break;
     }
 }
@@ -242,11 +308,13 @@ typedef enum {
 {
     switch (self.timerState) {
         case TimerStateCounting:
-        case TimerStateStopped:
-            // キャンセル
-            [self cancelTimer];
+            // 一時停止
+            [self stopTimer];
             break;
-            
+        case TimerStateStopped:
+            // 開始
+            [self startTimer];
+            break;
         default:
             break;
     }

@@ -10,7 +10,10 @@
 
 @interface CountDownView : UIView
 
-@property (nonatomic, assign) NSTimeInterval timerInterval;
+@property (nonatomic, assign) NSUInteger totalTime;
+
+- (void)showCountDownView;
+- (void)hideCountDownView;
 
 - (void)resetCountTimer;
 - (void)startCountTimer;

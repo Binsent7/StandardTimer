@@ -40,7 +40,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="162"/>
                                     </pickerView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="3lr-0n-hto" firstAttribute="top" secondItem="RZK-KI-eTU" secondAttribute="top" id="97g-Fb-EUE"/>
                                     <constraint firstAttribute="trailing" secondItem="3lr-0n-hto" secondAttribute="trailing" id="Lc3-qh-zQI"/>
@@ -125,6 +125,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="StandardTimer" id="Y1r-S6-8Zy"/>
                     <connections>
+                        <outlet property="backgoundView" destination="RZK-KI-eTU" id="c14-rZ-eDR"/>
                         <outlet property="leftButton" destination="8KC-as-sW6" id="rgK-Om-wxY"/>
                         <outlet property="rightButton" destination="xhG-lm-F3s" id="aLz-y6-Oe7"/>
                         <outlet property="selectTimePicker" destination="3lr-0n-hto" id="Ob6-53-XwN"/>
